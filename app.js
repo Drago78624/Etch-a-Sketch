@@ -2,6 +2,7 @@
 
 const gridContainer = document.querySelector(".grid-container");
 const btns = document.querySelectorAll("button");
+const colorPicker = document.querySelector(".color");
 
 const colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
 		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -14,7 +15,7 @@ const colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 		  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
 		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
-let color = "red"
+let color = "purple"
 
 function populateDivs(boxSize) {
   let boxWidth = 500 / boxSize;
@@ -31,6 +32,11 @@ function populateDivs(boxSize) {
 
 populateDivs(16);
 
+colorPicker.addEventListener("input", ()=>{
+  color = colorPicker.value
+  addingEventListener(color)
+})
+
 function addingEventListener(color) {
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
@@ -42,20 +48,22 @@ function addingEventListener(color) {
 
 addingEventListener(color);
 
+
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
       const boxes = document.querySelectorAll(".box");
     if (btn.classList.contains("reset")) {
       boxes.forEach((box) => {
-        box.style.backgroundColor = "lightgreen";
+        box.style.backgroundColor = "lightgray";
       });
+      color = colorPicker.value
     } else if (btn.classList.contains("size")) {
       const userInput = Number(
         prompt("enter the number of boxes (max: 100) : ")
       );
       if (userInput <= 100) {
         populateDivs(userInput);
-        addingEventListener("red");
+        addingEventListener("purple");
       } else {
         console.log("you want to crash or what !?");
       }
@@ -69,8 +77,8 @@ btns.forEach((btn) => {
                 }
             });
         });
-    }else if(btn.classList.contains("color")){
-        addingEventListener(btn.innerText)
-    }
+    }else if(btn.classList.contains("eraser")){
+      addingEventListener("lightgray")
+  }
   });
 });
