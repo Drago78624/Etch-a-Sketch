@@ -1,3 +1,33 @@
-button {
-    background-color: red;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  text-decoration: none;
+  list-style: none;
+  /* border: 1px solid red; */
+}
+html {
+  box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    width: 500px;
+    height: 500px;
+    background-color: lightgray;
+    display: flex;
+    flex-wrap: wrap;
+    /* overflow: hidden; */
+}
+
+.grid-container div {
+    background-color: lightgreen;
 }
