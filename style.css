@@ -43,9 +43,19 @@ h1 {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 33.75rem) {
+  .grid-container {
+    width: 300px;
+    height: 300px;
+  }
+  button {
+    font-size: 1rem !important;
+  }
+}
+
 .grid-container div {
     background-color: lightgray;
-    /* border: 1px solid gray; */
+    border: 1px solid gray;
 }
 
 .actions {
@@ -82,7 +92,7 @@ button {
   -o-transition: transform 200ms;
 }
 
-button:focus {
+button:active {
   outline: 2px solid red;
   transform: scale(0.93);
   -webkit-transform: scale(0.93);
