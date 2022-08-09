@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
     <title>Document</title>
 </head>
 <body>
     <div id="root">
         <h1>Etch-a-Sketch</h1>
-        <div class="grid-container">
+        <div class="grid-container" id="grid-container">
 
         </div>
         <div class="actions">
             <!-- <button class="color purple">purple</button>
             <button class="color black">black</button> -->
-            <label for="colorPicker">Select : <input type="color" class="color" value="#800080"></label>
-            <button class="rainbow">rainbow</button>
-            <button class="eraser">eraser</button>
+            <label for="colorPicker">Select : <input type="color" class="color-picker" value="#800080"></label>
+            <button class="rainbow color-btn">rainbow</button>
+            <button class="eraser color-btn">eraser</button>
             <button class="reset">reset</button>
-            <button class="size">make new grid</button>
+            <button class="new-grid-btn">make new grid</button>
         </div>
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
