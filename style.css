@@ -92,7 +92,7 @@ button {
   -o-transition: transform 200ms;
 }
 
-button:focus {
+button:active {
   outline: 2px solid red;
   transform: scale(0.93);
   -webkit-transform: scale(0.93);
