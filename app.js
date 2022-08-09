@@ -290,7 +290,7 @@ const colorArray = [
   "#77ecca",
 ];
 
-let color = "purple"
+let color = "purple";
 
 // BOXES POPULATION IN CONTAINER
 function populateBoxes(numOfBoxes = 16) {
@@ -312,49 +312,58 @@ newGridBtn.addEventListener("click", () => {
   const userInput = Number(prompt("enter new grid size (max: 100) : "));
   if (userInput <= 100) {
     populateBoxes(userInput);
+    startSketching()
+    color = colorPicker.value;
   } else {
     console.log("you wanna crash or what !?");
   }
-  
 });
 
 // ERASER
-eraser.addEventListener("click", ()=>{
-  rainbow.classList.remove("rainbow-active")
-  color = "lightgray"
-})
+eraser.addEventListener("click", () => {
+  rainbow.classList.remove("rainbow-active");
+  color = "lightgray";
+});
 
 // SKETCHING
-const boxes = document.querySelectorAll(".box")
+function startSketching() {
+  const boxes = document.querySelectorAll(".box");
+  boxes.forEach((box) => {
+    box.removeEventListener("mouseover", rainbowMode);
+  });
+  boxes.forEach((box) => {
+    box.addEventListener("mouseover", rainbowMode);
+  });
+}
 
-boxes.forEach(box => {
-  box.addEventListener("mouseover", ()=>{
-    if(rainbow.classList.contains("rainbow-active")){
-        const randomNum = Math.floor(Math.random() * colorArray.length)
-        color = colorArray[randomNum]
-        box.style.backgroundColor = color
-    }else {
-      box.style.backgroundColor = color
-    }
-  })
-})
+startSketching()
+
+function rainbowMode() {
+  if (rainbow.classList.contains("rainbow-active")) {
+    const randomNum = Math.floor(Math.random() * colorArray.length);
+    color = colorArray[randomNum];
+    this.style.backgroundColor = color;
+  } else {
+    this.style.backgroundColor = color;
+  }
+}
 
 // RESET
-reset.addEventListener("click", ()=>{
-const boxes = document.querySelectorAll(".box")
-  boxes.forEach(box => {
-    box.style.backgroundColor = "lightgray"
-  })
-})
+reset.addEventListener("click", () => {
+  const boxes = document.querySelectorAll(".box");
+  boxes.forEach((box) => {
+    box.style.backgroundColor = "lightgray";
+  });
+  color = colorPicker.value;
+});
 
-// RAINBOW 
-rainbow.addEventListener("click", ()=>{
-  rainbow.classList.toggle("rainbow-active")
-})
+// RAINBOW
+rainbow.addEventListener("click", () => {
+  rainbow.classList.toggle("rainbow-active");
+});
 
 // COLOR PICK
-colorPicker.addEventListener("input", ()=>{
-  rainbow.classList.remove("rainbow-active")
-  color = colorPicker.value
-})
-
+colorPicker.addEventListener("input", () => {
+  rainbow.classList.remove("rainbow-active");
+  color = colorPicker.value;
+});
