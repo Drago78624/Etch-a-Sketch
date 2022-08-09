@@ -359,7 +359,7 @@ reset.addEventListener("click", () => {
 
 // RAINBOW
 rainbow.addEventListener("click", () => {
-  rainbow.classList.toggle("rainbow-active");
+  rainbow.classList.add("rainbow-active");
 });
 
 // COLOR PICK
